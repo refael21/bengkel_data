@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bengkel Bang Pael — Servis Mobil Terpercaya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-mark">BP</span>
+        <span class="brand-name">BENGKEL<br>BANG PAEL</span>
+      </div>
+      <nav class="main-nav">
+        <a href="#layanan">Layanan</a>
+        <a href="#booking">Booking</a>
+        <a href="#riwayat">Riwayat Servis</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO: GAUGE = SIGNATURE ELEMENT -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <p class="eyebrow">Bengkel Umum &amp; Spesialis Mesin</p>
+        <h1>Mobil ngadet?<br>Serahkan ke <span>BANG PAEL</span>.</h1>
+        <p class="hero-desc">Dari servis rutin sampai turun mesin — satu bengkel, tiga layanan: Perawatan, Kerusakan, dan Pembersihan.</p>
+        <a href="#layanan" class="btn btn-primary">Lihat Daftar Layanan</a>
+      </div>
+
+      <!-- Gauge ini dipakai ULANG sebagai indikator loading di seluruh halaman -->
+      <div class="hero-gauge">
+        <svg id="rpm-gauge" viewBox="0 0 240 240" class="gauge">
+          <circle class="gauge-track" cx="120" cy="120" r="100"></circle>
+          <path class="gauge-arc" d="M 40 180 A 100 100 0 1 1 200 180"></path>
+          <g class="gauge-ticks" id="gauge-ticks"></g>
+          <line id="gauge-needle" class="gauge-needle" x1="120" y1="120" x2="120" y2="40"></line>
+          <circle class="gauge-hub" cx="120" cy="120" r="10"></circle>
+          <text x="120" y="150" class="gauge-label" id="gauge-status-text">SIAP</text>
+        </svg>
+        <p class="gauge-caption">Status koneksi API Setiap ada Update oleh Montir kami Mengenai Unit Anda</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYANAN (GET) -->
+  <section id="layanan" class="section">
+    <div class="container">
+      <p class="section-eyebrow">Daftar Layanan</p>
+      <h2 class="section-title">Tiga Rak Perkakas Kami</h2>
+
+      <div class="category-tabs" id="category-tabs">
+        <!-- diisi otomatis lewat GET /categories -->
+      </div>
+
+      <div class="ticket-board" id="services-board">
+        <!-- tiket servis diisi lewat GET /services -->
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING (POST) -->
+  <section id="booking" class="section section-alt">
+    <div class="container booking-grid">
+      <div>
+        <p class="section-eyebrow">Buat Janji</p>
+        <h2 class="section-title">Isi Surat Perintah Kerja</h2>
+        <p class="section-desc">Setiap booking yang kamu kirim akan langsung "distempel" jadi tiket kerja baru di sistem kami
+      </div>
+
+      <form id="booking-form" class="ticket-form">
+        <label>
+          Nama Pemilik
+          <input type="text" name="customer_name" required placeholder="cth: Rudi Hartono">
+        </label>
+        <label>
+          No. HP
+          <input type="tel" name="phone" required placeholder="cth: 081234567890">
+        </label>
+        <label>
+          Model Mobil
+          <input type="text" name="car_model" required placeholder="cth: Toyota Avanza">
+        </label>
+        <label>
+          Plat Nomor
+          <input type="text" name="car_plate" required placeholder="cth: B 1234 XYZ">
+        </label>
+        <label>
+          Pilih Layanan
+          <select name="service_id" id="service-select" required></select>
+        </label>
+        <button type="submit" class="btn btn-primary btn-stamp">
+          <span class="btn-text">Kirim &amp; Cetak Tiket</span>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- RIWAYAT / ADMIN (PUT/PATCH & DELETE) -->
+  <section id="riwayat" class="section">
+    <div class="container">
+      <p class="section-eyebrow">Meja Admin</p>
+      <h2 class="section-title">Riwayat Servis Berjalan</h2>
+      <p class="section-desc">Ubah status tiket (<code>PATCH</code>) atau tarik tiket dari papan (<code>DELETE</code>) — semua tersambung ke mock API secara langsung.</p>
+
+      <div class="ticket-board ticket-board--history" id="bookings-board">
+        <!-- diisi lewat GET /bookings, tiap tiket punya tombol PATCH & DELETE -->
+      </div>
+    </div>
+  </section>
+
+  <!-- toast notification untuk feedback POST/PATCH/DELETE -->
+  <div id="toast" class="toast"></div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Bengkel Bang Pael — Dibangun Oleh Refael Frances Havergal Sibarani Sebagai Project Portofolio.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
