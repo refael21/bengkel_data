@@ -1,17 +1,16 @@
-# Virtual Environment rahasia project
-venv/
+# Environment
 .env
-__pycache__/
+venv/
 *.pyc
+__pycache__/
 
-# Editor & OS
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-
-# Django tambahan
-staticfiles/
-static_root/
-media/
+# Django
+db.sqlite3
 *.log
+media/
+staticfiles/
+
+# OS & Editor
+.DS_Store
+.idea/
+.vscode/
